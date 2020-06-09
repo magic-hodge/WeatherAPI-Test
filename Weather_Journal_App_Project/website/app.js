@@ -15,7 +15,7 @@ let totalURL = `${baseURL}+${city.value}+${apiKey}`;
 // Create a new date instance dynamically with JS
 
 let d = new Date();
-let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+let newDate = (d.getMonth()+1)+'.'+ d.getDate()+'.'+ d.getFullYear();
 
 // Async function to post data.
 
@@ -48,15 +48,17 @@ const getWeatherData = async (url = "") => {
 		console.log(allData);
 
 		// giving data to variables.
+		// I'll have to move some of this somewhere else because it's not all supposed to be here.
 		
-		let date = newDate;
+		let dateField = document.getElementById("date");
 		let cityValue = allData["name"];
-		let tempValue = allData["main"]["temp"];
+		let tempValue = (((allData["main"]["temp"])-273.15) * 9/5 + 32).toFixed(0);
 		let contentText = userInput.value;
 
 		cityName.innerHTML = cityValue;
-		temp.innerHTML = tempValue;
-		content.innerHTML = contentText;
+		temp.innerHTML = `Temperature: ${tempValue} F`;
+		content.innerHTML = `Mood: ${contentText}`;
+		dateField.innerHTML = newDate;
 
 	} catch(error) {
 		console.log("error", error);
@@ -70,6 +72,12 @@ function postGet() {
 		.then(function(data){
 			retrieveData("/all")
 		})
+}
+
+// Function to populate recent entry.
+
+function makeRecentEntry() {
+	
 }
 
 // Function to test url and getting data.
