@@ -7,7 +7,7 @@ body {
 
 #app {
 	display: grid;
-	grid-auto-rows: minmax(150px, auto);
+	grid-auto-rows: minmax(135px, auto);
 	/* grid-template-columns: */
 	height: 100vh;
 	background-image: url("Vegas_Background.jpg");
@@ -19,12 +19,13 @@ body {
 }
 
 .holder {
-
+	
 }
 
 .entry {
 	background: black;
 	opacity: .75;
+	border-radius: 5px;
 }
 
 #entryHolder {
@@ -43,12 +44,34 @@ body {
 
 }
 
+#time {
+	font-size: 70px;
+}
 .headline {
-
+	margin-top: 3vh;
 }
 
 .title {
 
+}
+
+.submitBox {
+	height: 40px;
+}
+
+#submit {
+	height: 30px;
+	width: 100%;
+	font-weight: bold;
+	background-color: black;
+	opacity: 0.75;
+	color: white;
+	border-radius: 5px
+}
+
+#submit:hover {
+	opacity: 0.85;
+	color: yellow;
 }
 
 /* Basic Styling to Override Default For Basic HTML Elements */
@@ -68,7 +91,13 @@ input {
 	font-size: 20px;
 	font-family: 'Oswald', sans-serif;
 	border: none;
+	border-radius: 5px;
 	box-shadow: 2px 4px 5px #444;
+}
+
+input: hover {
+	box-shadow: 5px 5px 5px #808080;
+	transition: 0.25s;
 }
 
 h1 {
@@ -81,6 +110,7 @@ textarea {
 	color: white;
 	font-size: 20px;
 	font-family: 'Oswald', sans-serif;
+	border-radius: 5px
 }
 
 /*Reset stely for HTML element on active to have no border */
