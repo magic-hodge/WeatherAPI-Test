@@ -1,0 +1,140 @@
+/* Styling for the Weather Journal App */
+
+body {
+	background: white;
+	font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+#app {
+	display: grid;
+	grid-auto-rows: minmax(135px, auto);
+	/* grid-template-columns: */
+	height: 100vh;
+	background-image: url("Vegas_Background.jpg");
+	color: white;
+	justify-content: center;
+	grid-gap: 1em;
+	font-size: 20px;
+	font-family: 'Oswald', sans-serif;
+}
+
+.holder {
+	
+}
+
+.entry {
+	background: black;
+	opacity: .75;
+	border-radius: 5px;
+}
+
+#entryHolder {
+
+}
+
+#date {
+
+}
+
+#temp {
+
+}
+
+#content {
+
+}
+
+#time {
+	font-size: 70px;
+}
+.headline {
+	margin-top: 3vh;
+}
+
+.title {
+
+}
+
+.submitBox {
+	height: 40px;
+}
+
+#generate {
+	height: 30px;
+	width: 100%;
+	font-weight: bold;
+	background-color: black;
+	opacity: 0.75;
+	color: white;
+	border-radius: 5px
+}
+
+#generate:hover {
+	opacity: 0.85;
+	color: yellow;
+}
+
+/* Basic Styling to Override Default For Basic HTML Elements */
+
+label{
+	display: block;
+	font-size: 27px;
+}
+
+input {
+	display: block;
+	height: 60px;
+	width: 320px;
+	background: black;
+	opacity: .75;
+	color: white;
+	font-size: 20px;
+	font-family: 'Oswald', sans-serif;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 2px 4px 5px #444;
+}
+
+input: hover {
+	box-shadow: 5px 5px 5px #808080;
+	transition: 0.25s;
+}
+
+h1 {
+	font-size: 36px;
+}
+
+textarea {
+	background: black;
+	opacity: .75;
+	color: white;
+	font-size: 20px;
+	font-family: 'Oswald', sans-serif;
+	border-radius: 5px
+}
+
+/*Reset stely for HTML element on active to have no border */
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+	outline: none;
+}
+
+/* Style for Placeholder Text */
+
+::placeholder { /* Firefox, Chrome, Opera */
+	color: white;
+	font-family: 'Oswald', sans-serif;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+	color: white;
+	font-family: 'Oswald', sans-serif;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+	color: white;
+	font-family: 'Oswald', sans-serif;
+}
