@@ -26,10 +26,10 @@ let newDate = (d.getMonth()+1)+'.'+ d.getDate()+'.'+ d.getFullYear();
 const postWeatherData = async (url = "", data = {}) => {
 	console.log(data)
 		const response = await fetch(url, {
-		method: "POST",
-		credentials: "same-origin",
+		method: 'POST',
+		credentials: 'same-origin',
 		headers: {
-			"Content-Type": "application/json",
+			'Content-Type': 'application/json',
 		},
 		body: JSON.stringify(data),
 	});
@@ -49,7 +49,7 @@ const getWeatherData = async (url = "") => {
 	const request = await fetch(`${baseURL}${zip.value}${apiKey}`);
 	try {
 		const allData = await request.json();
-		
+		return allData;
 
 		//appDataArray.unshift(allData);
 
@@ -79,13 +79,13 @@ function updateUI() {
 
 	const retrieveData = async () => {
 		const request = await fetch('/all');
+		console.log('UpdateUI request', request);
 		try{
 			const allData = await request.json()
 			console.log(allData)
-
-			document.getElementById('temp').innerHTML = `Temp: ${Math.round(allData.temp)} F`;
+			document.getElementById('temp').innerHTML = `Temp: ${Math.round(allData.temperature)} F`;
 			document.getElementById("date").innerHTML = allData.date;
-			document.getElementById('content').innerHTML = `Feelings: ${allData.feel}`;
+			document.getElementById('content').innerHTML = `Feelings: ${allData.userContent}`;
 		}
 		catch(error) {
 			console.log("error", error);
@@ -168,13 +168,13 @@ document.getElementById("generate").addEventListener("click", testGetPost);
 
 function testGetPost() {
 	
-	getWeatherData(`${baseURL}+${zip.value}+${apiKey}`)
+	getWeatherData(`${baseURL}${zip.value}${apiKey}`)
 	.then(function(data){
 		console.log(data);
-		postWeatherData('https://addWeatherData', {
+		postWeatherData('/addWeatherData', {
 			temperature : data.main.temp,
 			date : newDate,
-			userContent : content,
+			userContent : userInput.value,
 		})
 	})
 	.then(function (){

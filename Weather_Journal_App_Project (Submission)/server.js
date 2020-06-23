@@ -41,9 +41,17 @@ app.get("/all", function (req, res) {
 // Callback function to complete GET '/all'
 
 // Post Route
-
+// messed with this last. . . added newEntry and lines above PD.push(reqbody). Also changed from /add to /addWeatherData.
 app.post("/add", function (req, res) {
-	res.send("POST received");
+	console.log(req.body)
+	projectData = {
+		temperature: req.body.temperature,
+		date: req.body.date,
+		content: req.body.userInput,
+	}
+	projectData = newEntry;
+	res.send(projectData);
+	console.log(projectData);
 });
 
 // Post weather data.
@@ -55,8 +63,9 @@ app.post("/addWeatherData", addWeatherData);
 //Still need to test this code.
 
 function addWeatherData (req, res) {
-	const body = request.body;
+	//const body = req.body;
 	data.push(req.body);
+	projectData.push(req.body);
 }
 
 // hopefully doing this right...
@@ -64,11 +73,11 @@ function addWeatherData (req, res) {
 
 function makeData(request){
 	let newData = request.body;
-	let newEntry = {
-		city: newData.city,
+	const newEntry = {
 		date: newData.date,
 		temperature: newData.temperature,
-		userResponse: newData.userResponse
+		userContent: newData.userContent,
 	}
 	data.push(newEntry);
+	projectData.push(newEntry);
 }
