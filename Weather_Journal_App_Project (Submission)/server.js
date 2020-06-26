@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 
 // Code for setting up and utilizing cors.
 
-const cors = require("cors");
+const cors = require('cors');
 app.use(cors());
 
 // Code to utilize website as the main folder.
@@ -65,7 +65,8 @@ app.post("/addWeatherData", addWeatherData);
 function addWeatherData (req, res) {
 	//const body = req.body;
 	data.push(req.body);
-	projectData.push(req.body);
+	projectData = {req.body, ...projectData};
+	projectData.append(req.body);
 }
 
 // hopefully doing this right...
@@ -79,5 +80,5 @@ function makeData(request){
 		userContent: newData.userContent,
 	}
 	data.push(newEntry);
-	projectData.push(newEntry);
+	projectData = {newEntry, ...projectData};
 }
