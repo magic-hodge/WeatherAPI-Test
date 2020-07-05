@@ -24,7 +24,7 @@ let newDate = (d.getMonth()+1)+'.'+ d.getDate()+'.'+ d.getFullYear();
 // This is a pain to figure out, and I'm not even completely sure I've sorted this. Please help. Thanks!
 
 const postWeatherData = async (url = "", data = {}) => {
-	console.log(data)
+	console.log(data);
 		const response = await fetch(url, {
 		method: 'POST',
 		credentials: 'same-origin',
@@ -32,8 +32,7 @@ const postWeatherData = async (url = "", data = {}) => {
 			'Content-Type': 'application/json',
 		},
 		body: JSON.stringify(data),
-	});
-
+	})
 		try {
 			const newData = await response.json();
 			console.log(newData);
@@ -82,9 +81,9 @@ function updateUI() {
 		console.log('UpdateUI request', request);
 		try{
 			const allData = await request.json()
-			console.log(allData)
+			console.lgo(allData)
 			document.getElementById('temp').innerHTML = `Temp: ${Math.round(allData.temperature)} F`;
-			document.getElementById("date").innerHTML = allData.date;
+			document.getElementById('date').innerHTML = allData.date;
 			document.getElementById('content').innerHTML = `Feelings: ${allData.userContent}`;
 		}
 		catch(error) {
@@ -166,15 +165,16 @@ document.getElementById("generate").addEventListener("click", testGetPost);
 //	 			});
 // }
 
+
 function testGetPost() {
 	
 	getWeatherData(`${baseURL}${zip.value}${apiKey}`)
 	.then(function(data){
 		console.log(data);
-		postWeatherData('/addWeatherData', {
+		postWeatherData('/add', {
 			temperature : data.main.temp,
 			date : newDate,
-			userContent : userInput.value,
+			userContent : userInput.value, 
 		})
 	})
 	.then(function (){

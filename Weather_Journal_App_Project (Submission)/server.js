@@ -26,7 +26,7 @@ app.use(express.static("website"));
 
 // Code to set up the server environment.
 
-const port = 8000;
+const port = 8080;
 
 const server = app.listen(port, ()=> {
 	console.log(`running on localhost ${port}`)
@@ -44,10 +44,10 @@ app.get("/all", function (req, res) {
 // messed with this last. . . added newEntry and lines above PD.push(reqbody). Also changed from /add to /addWeatherData.
 app.post("/add", function (req, res) {
 	console.log(req.body)
-	projectData = {
+	newEntry = {
 		temperature: req.body.temperature,
 		date: req.body.date,
-		content: req.body.userInput,
+		content: req.body.userContent,
 	}
 	projectData = newEntry;
 	res.send(projectData);
@@ -56,29 +56,3 @@ app.post("/add", function (req, res) {
 
 // Post weather data.
 
-const data = [];
-
-app.post("/addWeatherData", addWeatherData);
-
-//Still need to test this code.
-
-function addWeatherData (req, res) {
-	//const body = req.body;
-	data.push(req.body);
-	projectData = {req.body, ...projectData};
-	projectData.append(req.body);
-}
-
-// hopefully doing this right...
-// // function to make new data.
-
-function makeData(request){
-	let newData = request.body;
-	const newEntry = {
-		date: newData.date,
-		temperature: newData.temperature,
-		userContent: newData.userContent,
-	}
-	data.push(newEntry);
-	projectData = {newEntry, ...projectData};
-}
